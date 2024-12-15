@@ -88,27 +88,72 @@ void min_max (int *arr, int arr_size)
 void arr_sort (int *arr, int arr_size)
 {
     int *arr_local = malloc(arr_size * sizeof(int));
-    
-    
-    
+    for (int i = 0; i < arr_size; i++)
+    {
+        arr_local[i] = arr[i];
+    }
+    for (int i = 0; i < arr_size; i++)
+    {
+        for (int j = 0; j < arr_size - i; j++)
+        {
+            if (arr_local[j] > arr_local[j + 1])
+            {
+                int temp = arr_local[j];
+                arr_local[j] = arr_local[j + 1];
+                arr_local[j + 1] = temp;
+            }
+        }
+    }
+    arr_print(arr_local, arr_size);
     free(arr_local);
 }
 
 void arr_up_num(int *arr, int arr_size)
 {
-    
+    int *arr_local = malloc(arr_size * sizeof(int));
+    int index = 0;
+    int number = 0;
+    printf("Введите значение: \n");
+    get_int(&number, INT_MIN, INT_MAX);
+    for (int i = 0; i < arr_size; i++)
+    {
+        if (arr[i] > number)
+        {
+            arr_local[index] = arr[i];
+            index++;
+        }
+    }
+    arr_print(arr_local, index);
+    free(arr_local);
 }
 
 void negative_num (int *arr, int arr_size)
 {
-    
+    int *arr_local = malloc(arr_size * sizeof(int));
+    for (int i = 0; i < arr_size; i++)
+    {
+        arr_local[i] = arr[i];
+    }
+    for (int i = 0; i < arr_size; i++)
+    {
+        if (arr_local[i] < 0)
+            arr_local[i] = 0;
+    }
+    arr_print(arr_local, arr_size);
+    free(arr_local);
 }
 
 void arr_sum_and_multi (int *arr, int arr_size)
 {
-    
+    int sum = 0;
+    long long int multi = 1;
+    for (int i = 0; i < arr_size; i++)
+    {
+        sum += arr[i];
+        multi *= arr[i];
+    }
+    printf("Сумма элементов: %d\nПроизведение элементов: %lld\n", sum, multi);
 }
-
 
 
 int is_prime(int num) {
