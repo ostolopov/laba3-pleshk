@@ -92,9 +92,9 @@ void arr_sort (int *arr, int arr_size)
     {
         arr_local[i] = arr[i];
     }
-    for (int i = 0; i < arr_size; i++)
+    for (int i = 0; i < arr_size - 1; i++)
     {
-        for (int j = 0; j < arr_size - i; j++)
+        for (int j = 0; j < arr_size - i - 1; j++)
         {
             if (arr_local[j] > arr_local[j + 1])
             {
